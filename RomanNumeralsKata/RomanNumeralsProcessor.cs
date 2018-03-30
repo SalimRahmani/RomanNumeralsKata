@@ -75,9 +75,12 @@ namespace RomanNumeralsKata
 
         public int ToArabicNumbers(string input)
         {
-            if(input == "I")
+            foreach(char c in input)
             {
-                return 1;
+                if(_arabicNumsBasics.TryGetValue(c, out int value))
+                {
+                    return value;
+                }
             }
 
             return 0;
