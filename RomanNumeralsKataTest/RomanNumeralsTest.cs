@@ -76,6 +76,13 @@ namespace RomanNumeralsKataTest
             Assert.That(result, Is.EqualTo(expected));
         }
 
+        [TestCase(50, "L")]
+        public void should_return_L_when_number_is_50(int input, string expected)
+        {
+            string result = _romanNumeralsProcessor.ToRomanNumerals(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
         [TestCase(80, "LXXX")]
         public void should_return_LXXX_when_number_is_80(int input, string expected)
         {
