@@ -90,5 +90,12 @@ namespace RomanNumeralsKataTest
             Assert.That(result, Is.EqualTo(expected));
         }
 
+        [TestCase("I", 1)]
+        public void should_return_1_when_roman_number_is_I(string input, int expected)
+        {
+            int result = _romanNumeralsProcessor.ToArabicNumbers(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
     }
 }

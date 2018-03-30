@@ -19,6 +19,17 @@ namespace RomanNumeralsKata
             { 1000, 'M' },
         };
 
+        private readonly SortedDictionary<char, int> _arabicNumsBasics = new SortedDictionary<char, int>()
+        {
+            { 'I', 1 },
+            { 'V', 5 },
+            { 'X', 10 },
+            { 'L', 50 },
+            { 'C', 100 },
+            { 'D', 500 },
+            { 'M', 1000 },
+        };
+
         public string ToRomanNumerals(int number)
         {
             if (_romanNumsBasics.TryGetValue(number, out char value))
@@ -60,6 +71,16 @@ namespace RomanNumeralsKata
             }
 
             return stringBuilder.ToString();
+        }
+
+        public int ToArabicNumbers(string input)
+        {
+            if(input == "I")
+            {
+                return 1;
+            }
+
+            return 0;
         }
     }
 }   
