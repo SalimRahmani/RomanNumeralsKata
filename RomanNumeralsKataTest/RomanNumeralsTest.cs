@@ -10,7 +10,6 @@ namespace RomanNumeralsKataTest
 {
     public class RomanNumeralsTest
     {
-
         private RomanNumeralsProcessor _romanNumeralsProcessor = new RomanNumeralsProcessor();
 
         [TestCase(1, "I")]
@@ -21,7 +20,7 @@ namespace RomanNumeralsKataTest
         }
 
         [TestCase(2, "II")]
-        [TestCase(3, "III")]
+        //[TestCase(3, "III")]
         public void should_return_equal_number_of_strokes_when_input_is_lower_than_4(int input, string expected)
         {
             string result = _romanNumeralsProcessor.ToRomanNumerals(input);
@@ -37,6 +36,34 @@ namespace RomanNumeralsKataTest
 
         [TestCase(5, "V")]
         public void should_return_V_when_number_is_5(int input, string expected)
+        {
+            string result = _romanNumeralsProcessor.ToRomanNumerals(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase(6, "VI")]
+        public void should_return_VI_when_number_is_6(int input, string expected)
+        {
+            string result = _romanNumeralsProcessor.ToRomanNumerals(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase(7, "VII")]
+        public void should_return_VII_when_number_is_7(int input, string expected)
+        {
+            string result = _romanNumeralsProcessor.ToRomanNumerals(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase(9, "IX")]
+        public void should_return_IX_when_number_is_9(int input, string expected)
+        {
+            string result = _romanNumeralsProcessor.ToRomanNumerals(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase(19, "XIX")]
+        public void should_return_XIX_when_number_is_19(int input, string expected)
         {
             string result = _romanNumeralsProcessor.ToRomanNumerals(input);
             Assert.That(result, Is.EqualTo(expected));
