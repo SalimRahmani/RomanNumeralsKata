@@ -32,7 +32,7 @@ namespace RomanNumeralsKata
             {
                 int remainder = number % pair.Key;
                 int quotient = number / pair.Key;
-                if(remainder != number)
+                if (quotient > 0)
                 {
                     stringBuilder.Append(new String(_romanNumsBasics[pair.Key], quotient));
 
