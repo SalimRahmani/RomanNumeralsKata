@@ -10,7 +10,7 @@ namespace RomanNumeralsKata
     {
         public string Convert(int input)
         {
-            return "I";
+            return new String('I', input);
         }
     }
 }
