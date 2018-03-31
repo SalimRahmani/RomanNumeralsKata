@@ -8,15 +8,21 @@ namespace RomanNumeralsKata
 {
     public class RomanNumeralsProcessor
     {
-        private readonly SortedDictionary<int, char> _romanNumsBasics = new SortedDictionary<int, char>()
+        private readonly SortedDictionary<int, string> _romanNumsBasics = new SortedDictionary<int, string>()
         {
-            { 1, 'I' },
-            { 5, 'V' },
-            { 10, 'X' },
-            { 50, 'L' },
-            { 100, 'C' },
-            { 500, 'D' },
-            { 1000, 'M' },
+            { 1, "I" },
+            { 4, "IV" },
+            { 5, "V" },
+            { 9, "IX" },
+            { 10, "X" },
+            { 40, "XL" },
+            { 50, "L" },
+            { 90, "XC" },
+            { 100, "C" },
+            { 400, "CD" },
+            { 500, "D" },
+            { 900, "CM" },
+            { 1000, "M" },
         };
 
         private readonly SortedDictionary<char, int> _arabicNumsBasics = new SortedDictionary<char, int>()
@@ -32,58 +38,32 @@ namespace RomanNumeralsKata
 
         public string ToRomanNumerals(int number)
         {
-            if (_romanNumsBasics.TryGetValue(number, out char value))
+            StringBuilder result = new StringBuilder();
+
+            foreach(KeyValuePair<int, string> pair in _romanNumsBasics.Reverse())
             {
-                return value.ToString();
-            }
-
-            StringBuilder stringBuilder = new StringBuilder();
-
-            foreach (KeyValuePair<int, char> pair in _romanNumsBasics.Reverse())
-            {
-                int remainder = number % pair.Key;
-                int quotient = number / pair.Key;
-                if (quotient > 0)
+                while(number >= pair.Key)
                 {
-                    stringBuilder.Append(new String(_romanNumsBasics[pair.Key], quotient));
-
-                    if(quotient >= 1 && remainder != 0)
-                    {
-                        string remainderRomanNumeral = ToRomanNumerals(remainder);
-                        stringBuilder.Append(remainderRomanNumeral);
-                    }
-                    else if(quotient < 0)
-                    {
-                        string remainderStr = ToRomanNumerals(remainder);
-                        stringBuilder.Insert(0, remainderStr);
-                    }
-                    break;
-                }
-                else
-                {
-                    if (Math.Abs(number - pair.Key) == 1)
-                    {
-                        stringBuilder.Append("I");
-                        stringBuilder.Append(pair.Value.ToString());
-                        break;
-                    }
+                    number -= pair.Key;
+                    result.Append(pair.Value);
                 }
             }
 
-            return stringBuilder.ToString();
+            return result.ToString();
         }
 
         public int ToArabicNumbers(string input)
         {
-            foreach(char c in input)
+            int result = 0;
+            foreach (char c in input)
             {
-                if(_arabicNumsBasics.TryGetValue(c, out int value))
+                if (_arabicNumsBasics.TryGetValue(c, out int value))
                 {
-                    return value;
+                    result += value;
                 }
             }
 
-            return 0;
+            return result;
         }
     }
 }   

@@ -76,6 +76,27 @@ namespace RomanNumeralsKataTest
             Assert.That(result, Is.EqualTo(expected));
         }
 
+        [TestCase(31, "XXXI")]
+        public void should_return_XXXI_when_number_is_31(int input, string expected)
+        {
+            string result = _romanNumeralsProcessor.ToRomanNumerals(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase(40, "XL")]
+        public void should_return_XL_when_number_is_40(int input, string expected)
+        {
+            string result = _romanNumeralsProcessor.ToRomanNumerals(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase(48, "XLVIII")]
+        public void should_return_XLVIII_when_number_is_48(int input, string expected)
+        {
+            string result = _romanNumeralsProcessor.ToRomanNumerals(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
         [TestCase(50, "L")]
         public void should_return_L_when_number_is_50(int input, string expected)
         {
@@ -83,8 +104,36 @@ namespace RomanNumeralsKataTest
             Assert.That(result, Is.EqualTo(expected));
         }
 
+        [TestCase(56, "LVI")]
+        public void should_return_LVI_when_number_is_56(int input, string expected)
+        {
+            string result = _romanNumeralsProcessor.ToRomanNumerals(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
         [TestCase(80, "LXXX")]
         public void should_return_LXXX_when_number_is_80(int input, string expected)
+        {
+            string result = _romanNumeralsProcessor.ToRomanNumerals(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase(369, "CCCLXIX")]
+        public void should_return_CCCLXIX_when_number_is_369(int input, string expected)
+        {
+            string result = _romanNumeralsProcessor.ToRomanNumerals(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase(448, "CDXLVIII")]
+        public void should_return_CDXLVIII_when_number_is_448(int input, string expected)
+        {
+            string result = _romanNumeralsProcessor.ToRomanNumerals(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase(2751, "MMDCCLI")]
+        public void should_return_MMDCCLI_when_number_is_2751(int input, string expected)
         {
             string result = _romanNumeralsProcessor.ToRomanNumerals(input);
             Assert.That(result, Is.EqualTo(expected));
@@ -106,6 +155,13 @@ namespace RomanNumeralsKataTest
 
         [TestCase("X", 10)]
         public void should_return_10_when_roman_number_is_X(string input, int expected)
+        {
+            int result = _romanNumeralsProcessor.ToArabicNumbers(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase("II", 2)]
+        public void should_return_2_when_roman_number_is_II(string input, int expected)
         {
             int result = _romanNumeralsProcessor.ToArabicNumbers(input);
             Assert.That(result, Is.EqualTo(expected));
