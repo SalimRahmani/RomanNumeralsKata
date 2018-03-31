@@ -180,6 +180,13 @@ namespace RomanNumeralsKataTest
             Assert.That(result, Is.EqualTo(expected));
         }
 
+        [TestCase("XLVIII", 48)]
+        public void should_return_48_when_roman_number_is_XLVIII(string input, int expected)
+        {
+            int result = _romanNumeralsProcessor.ToArabicNumbers(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
         [TestCase("CCCLXIX", 369)]
         public void should_return_369_when_roman_number_is_CCCLXIX(string input, int expected)
         {
