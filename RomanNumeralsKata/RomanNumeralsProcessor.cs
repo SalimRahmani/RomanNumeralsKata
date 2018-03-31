@@ -25,15 +25,15 @@ namespace RomanNumeralsKata
             { 1000, "M" },
         };
 
-        private readonly SortedDictionary<string, int> _arabicNumsBasics = new SortedDictionary<string, int>()
+        private readonly SortedDictionary<char, int> _arabicNumsBasics = new SortedDictionary<char, int>()
         {
-            { "I", 1 },
-            { "V", 5 },
-            { "X", 10 },
-            { "L", 50 },
-            { "C", 100 },
-            { "D", 500 },
-            { "M", 1000 },
+            { 'I', 1 },
+            { 'V', 5 },
+            { 'X', 10 },
+            { 'L', 50 },
+            { 'C', 100 },
+            { 'D', 500 },
+            { 'M', 1000 },
         };
 
         public string ToRomanNumerals(int number)
@@ -59,29 +59,19 @@ namespace RomanNumeralsKata
         public int ToArabicNumbers(string input)
         {
             int result = 0;
-
-            for(int i = 0; i < input.Length; i++)
+            int lastValue = 0;
+            for(int i = input.Length - 1; i >= 0; i--)
             {
-                int current = _arabicNumsBasics[input[i].ToString()];
+                int newValue = _arabicNumsBasics[input[i]];
 
-                if(i + 1 < input.Length)
+                if(newValue >= lastValue)
                 {
-                    int nextItem = _arabicNumsBasics[input[i + 1].ToString()];
-
-                    if(current >= nextItem)
-                    {
-                        result += current + nextItem;
-                        i++;
-                    }
-                    else
-                    {
-                        result += nextItem - current;
-                        i++;
-                    }
+                    result += newValue;
+                    lastValue = newValue;
                 }
                 else
                 {
-                    result += current;
+                    result -= newValue;
                 }
             }
 
