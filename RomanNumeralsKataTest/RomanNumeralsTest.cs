@@ -173,5 +173,26 @@ namespace RomanNumeralsKataTest
             Assert.That(result, Is.EqualTo(expected));
         }
 
+        [TestCase("IV", 4)]
+        public void should_return_4_when_roman_number_is_IV(string input, int expected)
+        {
+            int result = _romanNumeralsProcessor.ToArabicNumbers(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase("CDXLVIII", 448)]
+        public void should_return_448_when_roman_number_is_CDXLVIII(string input, int expected)
+        {
+            int result = _romanNumeralsProcessor.ToArabicNumbers(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase("MMDCCLI", 2751)]
+        public void should_return_2751_when_roman_number_is_MMDCCLI(string input, int expected)
+        {
+            int result = _romanNumeralsProcessor.ToArabicNumbers(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
     }
 }
