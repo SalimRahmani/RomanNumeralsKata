@@ -139,6 +139,12 @@ namespace RomanNumeralsKataTest
             Assert.That(result, Is.EqualTo(expected));
         }
 
+        [TestCase(3200)]
+        public void should_throw_exception_when_number_is_larger_than_3000(int input)
+        {
+            Assert.Throws<ArgumentException>(() => _romanNumeralsProcessor.ToRomanNumerals(input));
+        }
+
         [TestCase("I", 1)]
         public void should_return_1_when_roman_number_is_I(string input, int expected)
         {

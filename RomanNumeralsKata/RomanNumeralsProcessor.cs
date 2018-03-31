@@ -38,6 +38,10 @@ namespace RomanNumeralsKata
 
         public string ToRomanNumerals(int number)
         {
+            if (number > 3000)
+            {
+                throw new ArgumentException("RomanNumber only supports numbers up to 3000");
+            }
             StringBuilder result = new StringBuilder();
 
             foreach(KeyValuePair<int, string> pair in _romanNumsBasics.Reverse())
