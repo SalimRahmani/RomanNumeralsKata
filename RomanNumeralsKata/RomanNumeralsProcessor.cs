@@ -60,11 +60,28 @@ namespace RomanNumeralsKata
         {
             int result = 0;
 
-            foreach(char c in input)
+            for(int i = 0; i < input.Length; i++)
             {
-                if (_arabicNumsBasics.TryGetValue(c.ToString(), out int value))
+                int current = _arabicNumsBasics[input[i].ToString()];
+
+                if(i + 1 < input.Length)
                 {
-                    result += value;
+                    int nextItem = _arabicNumsBasics[input[i + 1].ToString()];
+
+                    if(current >= nextItem)
+                    {
+                        result += current + nextItem;
+                        i++;
+                    }
+                    else
+                    {
+                        result += nextItem - current;
+                        i++;
+                    }
+                }
+                else
+                {
+                    result += current;
                 }
             }
 
